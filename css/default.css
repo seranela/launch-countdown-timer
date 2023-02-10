@@ -136,6 +136,11 @@ body {
 	clip-path: url(#flipcard-complete-path);
 }
 
+.countdown-value-back:focus,
+.social-link:focus {
+	outline: 3px dotted var(--color-neutral-white);
+}
+
 .countdown-value-top {
 	background-color: var(--color-neutral-dark-muted-blue-darker);
 	color: var(--color-primary-soft-red-dark);

@@ -17,42 +17,43 @@
 	<main class="main">
 		<h1 class="heading">We&rsquo;re launching soon</h1>
 
-		<section class="countdown">
+		<section class="countdown" aria-live="polite">
 			<h2 class="sr-only">Time Left</h2>
+
 			<div class="countdown-count">
 				<div id="days" class="countdown-value">
-					<div class="countdown-value-back"></div>
-					<div class="countdown-value-top" data-value="00"></div>
-					<div class="countdown-value-bottom" data-value="00"></div>
+					<span class="countdown-value-back" aria-labelledby="days-label"></span>
+					<div class="countdown-value-top" data-value="00" aria-hidden="true"></div>
+					<div class="countdown-value-bottom" data-value="00" aria-hidden="true"></div>
 				</div>
-				<div class="countdown-label">Days</div>
+				<span id="days-label" class="countdown-label">Days</span>
 			</div>
 
 			<div class="countdown-count">
 				<div id="hours" class="countdown-value">
-					<div class="countdown-value-back"></div>
-					<div class="countdown-value-top" data-value="00"></div>
-					<div class="countdown-value-bottom" data-value="00"></div>
+					<span class="countdown-value-back" aria-labelledby="hours-label"></span>
+					<div class="countdown-value-top" data-value="00" aria-hidden="true"></div>
+					<div class="countdown-value-bottom" data-value="00" aria-hidden="true"></div>
 				</div>
-				<div class="countdown-label">Hours</div>
+				<span id="hours-label" class="countdown-label">Hours</span>
 			</div>
 
 			<div class="countdown-count">
 				<div id="minutes" class="countdown-value">
-					<div class="countdown-value-back"></div>
-					<div class="countdown-value-top" data-value="00"></div>
-					<div class="countdown-value-bottom" data-value="00"></div>
+					<span class="countdown-value-back" aria-labelledby="minutes-label"></span>
+					<div class="countdown-value-top" data-value="00" aria-hidden="true"></div>
+					<div class="countdown-value-bottom" data-value="00" aria-hidden="true"></div>
 				</div>
-				<div class="countdown-label">Minutes</div>
+				<span id="minutes-label" class="countdown-label">Minutes</span>
 			</div>
 
 			<div class="countdown-count">
 				<div id="seconds" class="countdown-value">
-					<div class="countdown-value-back"></div>
-					<div class="countdown-value-top" data-value="00"></div>
-					<div class="countdown-value-bottom" data-value="00"></div>
+					<span class="countdown-value-back" aria-labelledby="seconds-label"></span>
+					<div class="countdown-value-top" data-value="00" aria-hidden="true"></div>
+					<div class="countdown-value-bottom" data-value="00" aria-hidden="true"></div>
 				</div>
-				<div class="countdown-label">Seconds</div>
+				<span id="seconds-label" class="countdown-label">Seconds</span>
 			</div>
 		</section>
 	</main>
