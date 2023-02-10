@@ -1,6 +1,8 @@
 (()=>{
 	// Set countdown date & time
 	const targetTime = new Date('2023-02-24T00:00:00').getTime();
+	let targetTimeMet = false;
+	let timer = null;
 
 	let time = {
 		'days': '00',
@@ -56,6 +58,13 @@
 		const currentTime = new Date().getTime();
 		const timeLeft = targetTime - currentTime;
 
+		if (timeLeft <= 0) {
+			targetTimeMet = true;
+			window.clearInterval(timer);
+			document.querySelector('#main-heading').innerHTML = 'We&rsquo;ve Launched!';
+			return;
+		}
+
 		time.days = pad(Math.floor(timeLeft / (1000 * 60 * 60 * 24)));
 		time.hours = pad(Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
 		time.minutes = pad(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)));
@@ -100,8 +109,10 @@
 	initPage();
 
 	// Loop
-	setInterval(() => {
+	timer = setInterval(() => {
 		updateTimeLeft();
-		updatePage();
+		if (!targetTimeMet) {
+			updatePage();
+		}
 	}, 1000);
 })();
