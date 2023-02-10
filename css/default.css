@@ -1,0 +1,281 @@
+/* Variables */
+
+:root {
+	/* Fonts */
+
+	--font-main: 'Red Hat Text', sans-serif; /* 700 */
+
+	/* Colors */
+
+	--color-primary-gray-blue: hsl(237, 18%, 59%);
+	--color-primary-soft-red: hsl(344, 94%, 72%);
+	--color-primary-soft-red-dark: hsl(345, 65%, 64%);
+	--color-neutral-white: hsl(0, 0%, 100%);
+	--color-neutral-dark-muted-blue: hsl(236, 21%, 26%);
+	--color-neutral-dark-muted-blue-darker: hsl(240, 21%, 18%);
+	--color-neutral-extra-dark-blue: hsl(235, 16%, 14%);
+	--color-neutral-extra-extra-dark-blue: hsl(234, 17%, 12%);
+
+	/* Countdown values */
+
+	--days: '00';
+	--hours: '00';
+	--minutes: '00';
+	--seconds: '00';
+}
+
+/* Resets */
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body,
+h1 {
+	margin: 0;
+}
+
+img {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Body */
+
+body {
+	background:
+		url(../images/bg-stars.svg) center / cover no-repeat
+		var(--color-neutral-extra-extra-dark-blue);
+	color: var(--color-primary-gray-blue);
+	font: 700 1rem var(--font-main);
+	text-rendering: optimizeSpeed;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.heading {
+	font-size: 1.1rem;
+	letter-spacing: 0.4em;
+	text-transform: uppercase;
+	color: var(--color-neutral-white);
+	text-align: center;
+	margin-bottom: 2.8em;
+}
+
+/* Main */
+
+.main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 1.5rem;
+}
+
+/* Countdown Timer */
+
+.countdown {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	gap: 3vw;
+	text-transform: uppercase;
+	width: 100%;
+	max-width: 44rem;
+}
+
+.countdown-count {
+	text-align: center;
+}
+
+.countdown-label {
+	font-size: 2vw;
+	letter-spacing: 0.2em;
+}
+
+.countdown-value {
+	position: relative;
+	height: calc(25vw - 0.75rem - 2rem + 20px);
+	max-height: calc(44rem / 4 - 0.75rem + 20px);
+	margin-bottom: 0.35em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: calc(0.1rem + 10vw);
+	transform-style: preserve-3d;
+	color: var(--color-primary-soft-red-dark);
+	border-radius: 4px;
+	box-shadow: 0 10px 0 hsla(0, 0%, 0%, 20%);
+}
+
+.countdown-value-back,
+.countdown-value-top,
+.countdown-value-bottom {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+}
+
+.countdown-value-back {
+	background-color: var(--color-neutral-dark-muted-blue-darker);
+	clip-path: url(#flipcard-complete-path);
+}
+
+.countdown-value-top {
+	background-color: var(--color-neutral-dark-muted-blue-darker);
+	color: var(--color-primary-soft-red-dark);
+	clip-path: url(#flipcard-top-path);
+	transform: rotateX(0);
+}
+
+.countdown-value-bottom {
+	background-color: var(--color-neutral-dark-muted-blue);
+	color: var(--color-primary-soft-red);
+	clip-path: url(#flipcard-bottom-path);
+	transform: rotateX(90deg);
+}
+
+.countdown-value-top::after,
+.countdown-value-bottom::after {
+	content: attr(data-value);
+}
+
+@keyframes flip-top {
+	0% {
+		transform: rotateX(0);
+	}
+	100% {
+		transform: rotateX(90deg);
+	}
+}
+
+@keyframes flip-bottom {
+	0% {
+		transform: rotateX(90deg);
+	}
+	100% {
+		transform: rotateX(0);
+	}
+}
+
+.flip-top {
+	animation: 0.3s flip-top forwards ease-in;
+}
+
+.flip-bottom {
+	animation: 0.3s flip-bottom forwards ease-out;
+}
+
+/* Footer */
+
+.footer {
+	display: flex;
+	justify-content: center;
+	height: 10rem;
+	background: url(../images/pattern-hills.svg) right -9rem top / cover no-repeat;
+}
+
+/* Footer - Social */
+
+.social-links {
+	display: flex;
+	align-items: flex-end;
+	gap: 2rem;
+	padding: 2.5rem 0;
+}
+
+.social-link {
+	display: inline-block;
+	text-decoration: none;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.social-icon {
+	width: 100%;
+	height: auto;
+}
+
+.social-icon-path {
+	fill: var(--color-primary-gray-blue);
+	transition: fill 0.3s;
+}
+
+.social-link:hover .social-icon-path {
+	fill: var(--color-primary-soft-red);
+}
+
+/* Responsive media queries */
+
+@media (min-width: 768px) {
+	/* Body */
+
+	.heading {
+		font-size: 1.5rem;
+		letter-spacing: 0.3em;
+		margin-bottom: 4.5em;
+	}
+
+	/* Countdown Timer */
+
+	.countdown {
+		gap: 2rem;
+	}
+
+	.countdown-label {
+		font-size: 1rem;
+		letter-spacing: 0.3em;
+	}
+
+	.countdown-value {
+		font-size: 5.3rem;
+		height: calc(25vw - 0.667rem - 0.65rem + 20px);
+		max-height: calc(44rem / 4 - 1.667rem + 20px);
+		margin-bottom: 0.3em;
+	}
+
+	.countdown-value,
+	.countdown-value-back,
+	.countdown-value-top,
+	.countdown-value-bottom {
+		border-radius: 10px;
+	}
+
+	/* Footer */
+
+	.footer {
+		height: 12rem;
+		background-position: center top;
+	}
+}
+
+/* Screen readers */
+
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+}
