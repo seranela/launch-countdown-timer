@@ -1,6 +1,6 @@
 (()=>{
 	// Set countdown date & time
-	const targetTime = new Date('2023-02-22T00:00:00').getTime();
+	const targetTime = new Date('2023-02-24T00:00:00').getTime();
 
 	let time = {
 		'days': '00',
